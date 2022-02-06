@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+{% block content %}
+
+<h1> Welcome To Movies </h1>
+<form method="get">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Search!</button>
+</form>
+
+{% if form_data %}
+<br>
+<ul>
+<li>Name: {{form_data.movie.0}}</li>
+<li>Genre: {{form_data.movie.1}}</li>
+<li>Year: {{form_data.movie.2}}</li>
+<li>Cast: {{form_data.movie.3}}</li>
+<img src="{{form_data.movie.4}}<" width="400" height="600">
+</ul>
+{% endif %}
+
+
+{% endblock content %}
