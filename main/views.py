@@ -1,27 +1,18 @@
 import os
 from django.shortcuts import render
 from .forms import MovieSearch
-import requests
+from .services import get_movie
 
 def index(request):
     if request.method == 'GET':
         form = MovieSearch(request.GET)
 
-        url = "https://imdb8.p.rapidapi.com/auto-complete"
+        if 'movie_name' in request.GET:
+            form_data = get_movie(request.GET['movie_name'])
+        else:
+            form_data = None
 
-        querystring = {"q":"game of thr"}
-
-        headers = {
-            'x-rapidapi-host': "imdb8.p.rapidapi.com",
-            'x-rapidapi-key': os.environ.get('IMDB_KEY')
-            }
-
-        response = requests.request("GET", url, headers=headers, params=querystring)
-
-        APIdata = response.json()
-
-        print(APIdata) #temp test
-        context = {'form': form}
+        context = {'form': form, 'form_data': form_data}
         return render(request, 'main/index.html', context)
     else:
         return render(request, 'main/index.html')
