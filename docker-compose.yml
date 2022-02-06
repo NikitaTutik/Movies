@@ -9,12 +9,13 @@ services:
       - POSTGRES_NAME=Movies
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+
     ports:
       - "5432:5432"
 
 
   web:
-    build: .
+    build: . 
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/movies
@@ -24,6 +25,7 @@ services:
       - POSTGRES_NAME=Movies
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - IMDB_KEY=$IMDB_KEY
     depends_on:
       - db
 
