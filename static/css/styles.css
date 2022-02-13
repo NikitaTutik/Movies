@@ -1,0 +1,41 @@
+#images{
+    text-align:center;
+    margin:50px auto; 
+
+}
+#images a{
+    margin:0px 20px;
+    display:inline-block;
+    text-decoration:none;
+    color:black;
+ }
+ body {
+    color: rgb(255, 255, 255);
+  }
+
+#particles-js {
+  background-color: rgb(18, 18, 18);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+#overlay {
+  width: 400px;
+  position: relative;
+  
+}
+
+.center {
+  text-align: center;
+  width: 1350px;
+}
+
+form {
+  padding-top: 200px;
+  text-align: center;
+  width: 1350px;
+}

@@ -1,0 +1,6 @@
+{% block content %}
+<h1 > Favorite movies </h1>
+{% for movie in obj %}
+<ul> <li>{{ movie.movie_name }} / {{ movie.movie_year}}</li> </ul>
+{% endfor %}
+{% endblock content %}

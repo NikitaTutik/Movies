@@ -1,23 +1,48 @@
 {% extends 'main/layout.html' %}
+{% load socialaccount %}
+{% load static %}
+
 {% block content %}
 
-<h1> Welcome To Movies </h1>
-<form method="get">
-    {% csrf_token %}
-    {{form}}
-    <button type="submit">Search!</button>
-</form>
+<div id="overlay">
+    <form method="get">
+        {% csrf_token %}
+        <div class="mb-3 text-muted">    
+            <div class="form-label ">   
+                {{ form }} 
+                <button type="submit" class="btn btn-secondary">Search!</button>
+            </div>
+            
+        </div>
+    </form>
 
-{% if form_data %}
-<br>
-<ul>
-<li>Name: {{form_data.movie.0}}</li>
-<li>Genre: {{form_data.movie.1}}</li>
-<li>Year: {{form_data.movie.2}}</li>
-<li>Cast: {{form_data.movie.3}}</li>
-<img src="{{form_data.movie.4}}<" width="400" height="600">
-</ul>
-{% endif %}
+    {% if form_data %}
+    <br>
+    <ul>
+        <form method="post"> 
+            {%csrf_token%}
+            <button name="add" value="add"> Add movie to favorites</button>
+        </form>
+    <li>Name: {{form_data.movie.0}}</li>
+    <li>Genre: {{form_data.movie.1}}</li>
+    <li>Year: {{form_data.movie.2}}</li>
+    <li>Cast: {{form_data.movie.3}}</li>
+    <img src="{{form_data.movie.4}}<" width="400" height="600">
+    </ul>
+    {% endif %}
+</div>
 
+
+
+<script>
+    particlesJS.load('particles-js', '{% static 'particles.json' %}', function(){
+        console.log('particles.json loaded...');
+    });
+</script> 
 
 {% endblock content %}
+
+
+
+
+
