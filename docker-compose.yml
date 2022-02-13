@@ -25,7 +25,7 @@ services:
       - POSTGRES_NAME=Movies
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-      - IMDB_KEY=4c56463f39mshc83a0842d95dcf2p1a7364jsn1f41a82a0394
+      - IMDB_KEY=${IMDB_KEY}
     depends_on:
       - db
 
