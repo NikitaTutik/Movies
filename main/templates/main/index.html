@@ -5,40 +5,33 @@
 {% block content %}
 
 <div id="overlay">
+    {% if form_data %}
+    <div id="details">
+        <br>
+        <ul>
+            <form method="post"> 
+                {%csrf_token%}
+                <button name="add" value="add"> Add movie to favorites</button>
+            </form>
+        <div class="mb-3 text-muted">
+        <li>Name: {{form_data.movie.0}}</li>
+        <li>Genre: {{form_data.movie.1}}</li>
+        <li>Year: {{form_data.movie.2}}</li>
+        <li>Cast: {{form_data.movie.3}}</li>
+        <img src="{{form_data.movie.4}}<" width="400" height="600">
+        <div>
+        </ul>
+    </div>
+    {% else %}
     <form method="get">
-        {% csrf_token %}
-        <div class="mb-3 text-muted">    
-            <div class="form-label ">   
-                {{ form }} 
-                <button type="submit" class="btn btn-secondary">Search!</button>
-            </div>
-            
+        
+        <div class="mb-3 text-muted" id="search">    
+            {{ form }} 
+            <button type="submit" class="btn btn-secondary">Search!</button>
         </div>
     </form>
-
-    {% if form_data %}
-    <br>
-    <ul>
-        <form method="post"> 
-            {%csrf_token%}
-            <button name="add" value="add"> Add movie to favorites</button>
-        </form>
-    <li>Name: {{form_data.movie.0}}</li>
-    <li>Genre: {{form_data.movie.1}}</li>
-    <li>Year: {{form_data.movie.2}}</li>
-    <li>Cast: {{form_data.movie.3}}</li>
-    <img src="{{form_data.movie.4}}<" width="400" height="600">
-    </ul>
     {% endif %}
 </div>
-
-
-
-<script>
-    particlesJS.load('particles-js', '{% static 'particles.json' %}', function(){
-        console.log('particles.json loaded...');
-    });
-</script> 
 
 {% endblock content %}
 

@@ -1,6 +1,11 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
 {% block content %}
-<h1 > Favorite movies </h1>
-{% for movie in obj %}
-<ul> <li>{{ movie.movie_name }} / {{ movie.movie_year}}</li> </ul>
-{% endfor %}
+<div class="text-muted" id="overlay">
+    <h1> {{ user.username }}'s favorite movies </h1>
+    {% for movie in obj %}
+    <ul> <li>{{ movie.movie_name }} / {{ movie.movie_year}}</li> </ul>
+    {% endfor %}
+</div>
 {% endblock content %}

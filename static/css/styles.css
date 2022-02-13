@@ -34,8 +34,21 @@
   width: 1350px;
 }
 
-form {
-  padding-top: 200px;
-  text-align: center;
-  width: 1350px;
+#search {
+  position: absolute;
+  
+  width: 400px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  margin-top: 150px;
+  margin-left: 270px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+#details {
+  text-align: left;
+  display: inline-block; 
 }
